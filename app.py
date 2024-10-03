@@ -11,6 +11,15 @@ def main():
         senha = senhaEntry.get()
         services.enviar_dados(nome, email, senha)
 
+        nomeEntry.delete(0, END)
+        emailEntry.delete(0, END)
+        senhaEntry.delete(0, END)
+
+    def deletar_user(email):
+        #emailEntry.delete(0, END)
+        email - emailEntry.get()
+        services.remover_usuario(email)
+
     def listar_usuario():
         usuarios = services.listar_usuario()
 
@@ -67,14 +76,17 @@ def main():
     senhaEntry = Entry(janela, width=30, show="*")
     senhaEntry.place(x=115, y=160)
  
-    enviar = Button(janela, text='Cadastrar', width=10)
+    enviar = Button(janela, text='Cadastrar', width=10, command=on_enviar)
     enviar.place(x=125, y=200)
  
-    listar = Button(janela, text='Listar Usuários', width=15)
+    listar = Button(janela, text='Listar Usuários', width=15, command=listar_usuario)
+    listar.place(x=225, y=200)
+
+    deletar = Button(janela, text='Deletar Usuários', width=15, command=lambda: deletar_user(email))
     listar.place(x=225, y=200)
  
-   #passion = Label(janela, text='grahphic design is my passion', width=40)
-   #passion.place(x=5, y=300)
+    #passion = Label(janela, text='grahphic design is my passion', width=40)
+    #passion.place(x=5, y=300)
  
     janela.mainloop()
  
